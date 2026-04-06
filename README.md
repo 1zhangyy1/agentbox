@@ -113,8 +113,6 @@ The AI will automatically use AgentBox commands.
 
 ## Installation
 
-### Option 1: Use npx (Recommended)
-
 **No installation needed** - run directly with npx:
 ```bash
 npx @nuomiji/agentbox@latest export --output my-agent.agentbox
@@ -122,30 +120,6 @@ npx @nuomiji/agentbox@latest import my-agent.agentbox
 ```
 
 This always uses the latest version.
-
-### Option 2: Global Install
-
-For frequent use, install globally:
-```bash
-npm install -g @nuomiji/agentbox
-```
-
-Then use the shorter command:
-```bash
-agentbox export --output my-agent.agentbox
-agentbox import my-agent.agentbox
-```
-
-### Option 3: From Source
-
-Clone and build from source:
-```bash
-git clone https://github.com/1zhangyy1/agentbox.git
-cd agentbox
-npm install
-npm run build
-npm link  # Makes 'agentbox' command available globally
-```
 
 ## What Gets Captured
 

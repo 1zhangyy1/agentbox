@@ -113,8 +113,6 @@ AI 会自动使用 AgentBox 命令。
 
 ## 安装方式
 
-### 方式 1：使用 npx（推荐）
-
 **无需安装** - 直接用 npx 运行：
 ```bash
 npx @nuomiji/agentbox@latest export --output my-agent.agentbox
@@ -122,30 +120,6 @@ npx @nuomiji/agentbox@latest import my-agent.agentbox
 ```
 
 始终使用最新版本。
-
-### 方式 2：全局安装
-
-频繁使用时，可全局安装：
-```bash
-npm install -g @nuomiji/agentbox
-```
-
-然后使用更短的命令：
-```bash
-agentbox export --output my-agent.agentbox
-agentbox import my-agent.agentbox
-```
-
-### 方式 3：从源码安装
-
-克隆并从源码构建：
-```bash
-git clone https://github.com/1zhangyy1/agentbox.git
-cd agentbox
-npm install
-npm run build
-npm link  # 使 'agentbox' 命令全局可用
-```
 
 ## 捕获的内容
 
