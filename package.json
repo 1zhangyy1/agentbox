@@ -1,0 +1,54 @@
+{
+  "name": "@nuomiji/agentbox",
+  "version": "0.1.0",
+  "description": "Portable agent environment collector and packager.",
+  "type": "module",
+  "bin": {
+    "agent-box": "./dist/cli.js",
+    "agentbox": "./dist/cli.js"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.js.map",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "collect": "tsx src/cli.ts collect",
+    "smoke": "tsx scripts/smoke-test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "agent",
+    "cli",
+    "mcp",
+    "skills",
+    "portable",
+    "claude-code",
+    "codex",
+    "ai-agent"
+  ],
+  "author": "zhangyy",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "commander": "^14.0.0",
+    "smol-toml": "^1.4.1",
+    "yaml": "^2.8.1",
+    "yazl": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^24.6.0",
+    "@types/yazl": "^3.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3"
+  }
+}

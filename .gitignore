@@ -1,0 +1,20 @@
+dist/
+node_modules/
+*.agentbox
+
+# Test and temporary directories
+test-*/
+snapshot-*/
+staging/
+apply-targets/
+import-preview/
+exports/
+
+# Runtime and temporary files
+.agentbox/
+.agentbox-temp/
+.agentbox-preview/
+.agent-runtime/
+.agents/
+.claude/settings.local.json
+test-bindings.env
