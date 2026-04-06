@@ -131,19 +131,53 @@ npx @nuomiji/agentbox@latest import my-agent.agentbox
 | Memory | 项目记忆文件 |
 | Session | 最近的对话记录和计划 |
 
-## 导入后的文件结构
+## .agentbox 文件格式
+
+`.agentbox` 文件是一个**便携式 ZIP 压缩包**（通常 1-10MB），包含你的完整智能体环境：
 
 ```
-.agentbox/
-├── preview/              # AI 友好的摘要
-│   ├── session.md       # 最近的消息和计划
-│   ├── memory.md        # 记忆摘录
-│   └── settings.json    # 设置概览
-├── session/
-│   ├── transcripts/     # 完整对话历史
-│   └── plans/           # 完整计划文件
-└── layers/              # 原始配置数据
+example.agentbox (ZIP 压缩包)
+├── box.yaml                      # 包元数据
+├── bindings.template.env         # API 密钥/密钥模板
+├── layers/                       # 配置层
+│   ├── profile.yaml             # CLAUDE.md 指令
+│   ├── skills.yaml              # 已安装技能
+│   ├── memory.yaml              # 记忆文件
+│   ├── plugins.yaml             # 插件设置
+│   ├── session.yaml             # 会话元数据
+│   └── ...                      # 其他设置
+├── session/                      # 对话历史
+│   ├── transcripts/             # 完整对话日志 (.jsonl)
+│   └── plans/                   # 计划文件 (.md)
+├── meta/
+│   └── security-audit.json      # 脱敏记录
+└── resolved.yaml                 # 合并后的配置
 ```
+
+**核心特性：**
+- **便携：** 单个文件，可通过邮件、Slack 或 Git 轻松共享
+- **安全：** API 密钥和路径自动脱敏
+- **完整：** 包含重建智能体环境所需的一切
+- **可读：** 解压后可查看内容（YAML + Markdown）
+
+**导入后得到：**
+```
+your-project/
+├── .agentbox/                    # 解压后的包
+│   ├── preview/                 # AI 友好的摘要
+│   │   ├── session.md          # 最近的消息和计划
+│   │   ├── memory.md           # 记忆摘录
+│   │   ├── settings.json       # 设置概览
+│   │   └── profile.md          # 指令预览
+│   ├── layers/                  # 原始配置
+│   └── session/                 # 完整对话记录
+├── CLAUDE.md                     # 已导入（如不存在）
+└── .claude/settings.local.json   # 合并后的设置
+```
+
+## 导入后的文件结构
+
+`.agentbox/preview/` 目录包含 AI 友好的摘要，帮助你理解导入的内容，无需阅读原始 YAML 文件。
 
 ## 系统要求
 

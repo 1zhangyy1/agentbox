@@ -131,19 +131,53 @@ This always uses the latest version.
 | Memory | Project memory files |
 | Session | Recent transcripts and plans |
 
-## File Structure After Import
+## The .agentbox File Format
+
+An `.agentbox` file is a **portable ZIP archive** (typically 1-10MB) containing your complete agent environment:
 
 ```
-.agentbox/
-├── preview/              # AI-friendly summaries
-│   ├── session.md       # Recent messages & plans
-│   ├── memory.md        # Memory excerpts
-│   └── settings.json    # Settings overview
-├── session/
-│   ├── transcripts/     # Full conversation history
-│   └── plans/           # Full plan files
-└── layers/              # Raw configuration data
+example.agentbox (ZIP archive)
+├── box.yaml                      # Bundle metadata
+├── bindings.template.env         # Template for API keys/secrets
+├── layers/                       # Configuration layers
+│   ├── profile.yaml             # CLAUDE.md instructions
+│   ├── skills.yaml              # Installed skills
+│   ├── memory.yaml              # Memory files
+│   ├── plugins.yaml             # Plugin settings
+│   ├── session.yaml             # Session metadata
+│   └── ...                      # Other settings
+├── session/                      # Conversation history
+│   ├── transcripts/             # Full conversation logs (.jsonl)
+│   └── plans/                   # Plan files (.md)
+├── meta/
+│   └── security-audit.json      # What was redacted
+└── resolved.yaml                 # Merged configuration
 ```
+
+**Key features:**
+- **Portable:** Single file, easy to share via email, Slack, or Git
+- **Secure:** API keys and paths automatically redacted
+- **Complete:** Everything needed to recreate your agent environment
+- **Human-readable:** Unzip to inspect contents (YAML + Markdown)
+
+**After import, you get:**
+```
+your-project/
+├── .agentbox/                    # Unpacked bundle
+│   ├── preview/                 # AI-friendly summaries
+│   │   ├── session.md          # Recent messages & plans
+│   │   ├── memory.md           # Memory excerpts
+│   │   ├── settings.json       # Settings overview
+│   │   └── profile.md          # Instructions preview
+│   ├── layers/                  # Raw configuration
+│   └── session/                 # Full transcripts
+├── CLAUDE.md                     # Imported (if not exists)
+└── .claude/settings.local.json   # Merged settings
+```
+
+## File Structure After Import
+
+The `.agentbox/preview/` directory contains AI-friendly summaries that help you understand what was imported without reading raw YAML files.
 
 ## Requirements
 
