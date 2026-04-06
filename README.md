@@ -4,6 +4,8 @@
 
 AgentBox packages your AI agent's complete environment (settings, skills, memory, sessions) into a single portable file that can be shared across projects, machines, and teams.
 
+English | [简体中文](./README.zh-CN.md)
+
 ## What Problem Does It Solve?
 
 When working with AI agents like Claude Code, you accumulate valuable context:
@@ -91,14 +93,15 @@ AgentBox includes a skill that teaches AI assistants to use it automatically.
 
 **Install the skill:**
 
-1. Clone this repository or download the skill folder
-2. Copy `.claude/skills/agentbox/` to your project's `.claude/skills/` directory
-3. The skill is now available to your AI assistant
+Use `npx skills` command for one-click installation:
+```bash
+npx skills add https://github.com/1zhangyy1/agentbox --skill agentbox
+```
 
-**Or install from source:**
+**Or install manually:**
 ```bash
 git clone https://github.com/1zhangyy1/agentbox.git
-cp -r agentbox/.claude/skills/agentbox /path/to/your/project/.claude/skills/
+cp -r agentbox/skills/agentbox /path/to/your/project/.claude/skills/
 ```
 
 **Once installed, just say:**
@@ -181,6 +184,17 @@ cd agentbox
 npm install
 npm run build
 ```
+
+## Roadmap
+
+### 🚀 Coming Soon
+
+**Multi-Platform Support**
+- [ ] Codex Adapter - Support configuration import/export for Codex platform
+- [ ] OpenClaw Adapter - Support configuration conversion for OpenClaw platform
+- [ ] Cross-Platform Migration - Seamlessly migrate agent configurations between different AI platforms
+
+**Goal:** Make AgentBox the true cross-platform agent configuration standard, allowing you to easily migrate and share your agent environment regardless of which AI platform you use.
 
 ## Links
 
